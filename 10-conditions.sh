@@ -9,3 +9,4 @@ echo "number $num1 is grater than 20"
 
 else 
 echo "number $num1 is lessthan 20"
+fi
