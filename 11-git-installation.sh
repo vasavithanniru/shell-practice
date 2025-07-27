@@ -39,9 +39,10 @@ then
         echo "Mysql Installation is failed, check it.."
         exit 1
     else
-        echo "mysql installion is success.."    
+        echo "mysql installion is success.." 
+    fi       
 else
     "mysql is already installed.."    
-
+fi
     
     
