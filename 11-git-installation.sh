@@ -8,5 +8,16 @@ then
     exit1
 fi
 
+dnf list installed git -y
+
+if [ $? -ne 0 ]
+then
+    echo "installing git"
+    dnf install git -y
+else
+    echo "git is already installed" 
+fi    
+
+
     
     
