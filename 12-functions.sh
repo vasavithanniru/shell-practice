@@ -28,4 +28,15 @@ then
     VALIDATE $? "git"
 else
     echo "git is already installed..nothing to do.."
-fi    
+fi  
+
+dnf list installed mysql -y
+
+if [ $? -ne 0 ] 
+then
+    echo "MySQL is not installed.. goint to install"
+    dnf install mysql -y
+    VALIDATE $? "MySQL"
+else
+    echo "MySQL is already installed.. nothing to do"    
+fi     
