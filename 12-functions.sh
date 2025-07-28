@@ -10,7 +10,7 @@ else
     echo "user is root"    
 fi    
 
-dnf installed git -y
+dnf list installed git -y
 
 if [ $? -ne 0 ]
 then 
@@ -19,6 +19,8 @@ then
     if [ $? -ne 0 ]
         echo "git  installation is failed..check it.."
     else 
-        echo "git installation is success.."    
+        echo "git installation is success.."  
+    fi      
 else
     echo "git is already installed..nothing to do.."
+fi    
