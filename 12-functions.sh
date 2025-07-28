@@ -15,7 +15,8 @@ VALIDATE(){
     then 
         echo "git installation is .... FAILURE"
     else
-        echo "git installation is .... SUCCESS"    
+        echo "git installation is .... SUCCESS"   
+    fi     
 }
 
 dnf list installed git -y
@@ -24,7 +25,7 @@ if [ $? -ne 0 ]
 then 
     echo "git is not installed..going to install.."
     dnf install git -y 
-    VALIDATE()      
+    VALIDATE     
 else
     echo "git is already installed..nothing to do.."
 fi    
