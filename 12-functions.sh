@@ -13,7 +13,8 @@ fi
 VALIDATE(){
     if [ $1 -ne 0 ]
     then 
-        echo "$2 installation is .... FAILURE"
+        echo "$2 installation is .... FAILED"
+        exit 1
     else
         echo "$2 installation is .... SUCCESS"   
     fi     
