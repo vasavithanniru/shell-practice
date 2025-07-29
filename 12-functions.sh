@@ -2,13 +2,13 @@
 
 USERID=$(id -u)
 
+CHECK_ROOT(){
 if [ $USERID -ne 0 ]
 then
     echo "Run with root privellege"
-    exit 1
-# else
-#     echo "user is root"    
-fi    
+    exit 1   
+fi  
+}  
 
 VALIDATE(){
     if [ $1 -ne 0 ]
@@ -20,6 +20,8 @@ VALIDATE(){
     fi     
 }
 
+CHECK_ROOT
+
 dnf list installed git -y
 
 if [ $? -ne 0 ]
@@ -30,6 +32,7 @@ then
 else
     echo "git is already installed..nothing to do.."
 fi  
+
 
 dnf list installed mysql -y
 
