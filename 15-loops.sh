@@ -1,4 +1,4 @@
-#!/in/bash
+#!/bin/bash
 
 USERID=$(id -u)
 
@@ -18,28 +18,17 @@ VALIDATE(){
     fi     
 }
 
-#sh 15-loops.sh git mysql postfix ....
-for package in $@ 
+#sh 15-loops.sh git mysql postfix ....(pass arguments from cmd)
+
+for package in $@
 do
     dnf list installed $package -y
 
     if [ $? -ne 0 ]
     then 
-        echo "$package is not installed.. going to intall it.."
-        dnf install $package -y
+        echo "$package is not installed..going to install it.."
+        dnf install $package -y 
         VALIDATE $? "$package"
     else
-        echo "$package is already installed..Nothing to do.."    
-    fi  
-done
-
-# dnf list installed mysql -y
-
-# if [ $? -ne 0 ]
-# then 
-#     echo "MySQL is not installed.. going to install"
-#     dnf install mysql -y
-#     VALIDATE $? "MySQL"
-# else
-#     echo "MySQL is already installed.. Nothing to do"   
-# fi     
+        echo "$package is already installed..Nothing to do" 
+    fi    
