@@ -24,6 +24,18 @@ VALIDATE(){
     fi        
 }
 
+USAGE(){
+    echo "USAGE:: sh 16-redirectors.sh package1 package2 ..." 
+    exit 1
+}
+
+echo "Script started executing at: $TIME_STAMP" | tee -a $LOG_FILE
+
+if [ $# -eq 0 ]
+then
+    USAGE
+fi    
+
 for package in $@
 do
     dnf list installed $package -y &>> $LOG_FILE
