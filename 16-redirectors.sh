@@ -8,24 +8,30 @@ TIME_STAMP=$(date +%F-%H:%M:%S)
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME-$TIME_STAMP.log" 
 mkdir -p $LOGS_FOLDER
 
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+B="\e[34m"
+N="\e[0m"
+
 if [ $USERID -ne 0 ]
 then
-    echo "Run this script with root prevellege" | tee -a $LOG_FILE
+    echo -e " $R Run this script with root prevellege $N" | tee -a $LOG_FILE
     exit 1
 fi    
 
 VALIDATE(){
     if [ $1 -ne 0 ]
     then 
-        echo "$2 installation is failed..check it.." | tee -a $LOG_FILE
+        echo -e "$R $2 installation is failed..check it.. $N" | tee -a $LOG_FILE
         exit 1
     else
-        echo "$2 installation is success.." | tee -a $LOG_FILE
+        echo -e "$G $2 installation is success.. $N" | tee -a $LOG_FILE
     fi        
 }
 
 USAGE(){
-    echo "USAGE:: sh 16-redirectors.sh package1 package2 ..." 
+    echo -e "$R USAGE:: sh 16-redirectors.sh package1 package2 ... $N" 
     exit 1
 }
 
@@ -42,10 +48,10 @@ do
 
     if [ $? -ne 0 ]
     then
-        echo "$package is not installed..going to install it" | tee -a $LOG_FILE
+        echo -e " $B $package is not installed..going to install it $N" | tee -a $LOG_FILE
         dnf install $package -y &>> $LOG_FILE
         VALIDATE $? "$package"
     else
-        echo "$package is already installed..nothing to do" | tee -a $LOG_FILE
+        echo -e "$Y $package is already installed..nothing to do $N" | tee -a $LOG_FILE
     fi       
 done    
