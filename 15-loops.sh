@@ -32,3 +32,4 @@ do
     else
         echo "$package is already installed..Nothing to do" 
     fi    
+done
