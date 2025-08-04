@@ -6,7 +6,7 @@ failure(){
     echo "failure at $1:$2"
 }        
 
-trap 'failure "${LINENO}" "$BASH_COMMAND"' ERR  #ERR is the error signal
+trap 'failure "$LINENO" "$BASH_COMMAND"' ERR  #ERR is the error signal
 echo "Hi, This is success"
 echoo "Hi, This is failed"
 echo "Hi After fail"
