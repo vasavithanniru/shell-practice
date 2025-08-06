@@ -29,14 +29,14 @@ then
     exit 1
 fi    
 
-FILES=$(find $SOURCE_DIR -name "*.sh" -mtime +$DAYS)
+FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
 echo "Files: $FILES"
 
 if [ ! -z $FILES ] #true if file is empty. ! makes it expression false.
 then 
     echo "Files are found"
     ZIP_FILE="$DEST_DIR/app-logs-$TIME_STAMP.zip"
-    find ${SOURCE_DIR} -name "*.sh" -mtime +$DAYS | zip "$ZIP_FILE" -@
+    find ${SOURCE_DIR} -name "*.log" -mtime +$DAYS | zip "$ZIP_FILE" -@
 
     #Check if zip file successfully created or not
     if [ -f $ZIP_FILE ]
