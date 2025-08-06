@@ -40,18 +40,18 @@ echo "Files: $FILES"
 if [ ! -z $FILES ]
 then
     echo "Files are found"
-    ZIP_FILE="$DEST_DIR/app-logs/$file_name-$TIMESTAMP.zip" #Zip the files
+    ZIP_FILE="$DEST_DIR/app-logs/$file-$TIMESTAMP.zip" #Zip the files
     find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip $ZIP_FILE -@
 
     if [ -f $ZIP_FILE ]  #check zipping file is succesfull or not
     then
         echo "Successfully zipped the files"
 
-        # while IFS= read -r file
-        # do 
-        #     echo "Deleting Files: $file"
-        #     rm -rf $file
-        # done <<< $FILES    
+        while IFS= read -r file
+        do 
+            echo "Deleting Files: $file"
+            rm -rf $file
+        done <<< $FILES    
 
     else
         echo "Zipping the files is Failed"
