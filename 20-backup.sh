@@ -40,11 +40,11 @@ then
     then
         echo "Successfully zipped the files"
 
-        while IFS= read -r file
-        do 
-            echo "Deleting Files: $file"
-            rm -rf $file
-        done <<< $FILES    
+        # while IFS= read -r file
+        # do 
+        #     echo "Deleting Files: $file"
+        #     rm -rf $file
+        # done <<< $FILES    
 
     else
         echo "Zipping the files is Failed"
