@@ -10,6 +10,13 @@ USAGE(){
     echo "USAGE:: sh 20.backup.sh <source> <destination> <days(optional)>"
 }
 
+failure(){
+    echo "Failed at $1:$2"
+}
+
+trap 'failure "$LINENO" "$BASH_COMMAND" ERR'
+
+
 if [ $# -lt 2 ]
 then 
     USAGE
