@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SOURCE_DIR=$1
-DEST_DIR=${2}
+DEST_DIR=$2
 DAYS=${3:-14} #if $3 is empty, default is 14
 TIMESTAMP=$(date +%F-%H-%M-%S) 
 
@@ -18,14 +18,12 @@ fi
 if [ ! -d $SOURCE_DIR ]
 then 
     echo "$SOURCE_DIR does not exist..Please check"
-    exit 1
 fi  
 
-if [ ! -d $DEST-DIR ]
+if [ ! -d $DEST_DIR ]
 then
     echo "$DEST_DIR does not exist..Please check"
-    exit 1
 fi
 
-FILES=find $SOURCE_DIR -name "*.log" -mtime -$DAYS
+FILES=$(find $SOURCE_DIR -name "*.log" -mtime -$DAYS)
 echo "Files: $FILES"
