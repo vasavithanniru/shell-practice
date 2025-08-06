@@ -32,7 +32,7 @@ echo "Files: $FILES"
 if [ ! -z $FILES ]
 then
     echo "Files are found"
-    ZIP_FILE="$DEST_DIR/app-logs/{ls -l $SOURCE_DIR | cut -d "." -f1}-$TIMESTAMP.zip" #Zip the files
+    ZIP_FILE="$DEST_DIR/app-logs/{ls $SOURCE_DIR | cut -d "." -f1}-$TIMESTAMP.zip" #Zip the files
     find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip $ZIP_FILE -@
 
     if [ -f $ZIP_FILE ]  #check zipping file is succesfull or not
