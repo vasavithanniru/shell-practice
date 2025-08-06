@@ -4,7 +4,7 @@ SOURCE_DIR=$1
 DEST_DIR=$2
 DAYS=${3:-14} #if $3 is empty, default is 14
 TIMESTAMP=$(date +%F-%H-%M-%S) 
-file_name=$(ls $SOURCE_DIR | cut -d "." -f1)
+#file_name=$(ls $SOURCE_DIR | cut -d "." -f1)
 
 USAGE(){
     echo "USAGE:: sh 20.backup.sh <source> <destination> <days(optional)>"
