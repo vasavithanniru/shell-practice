@@ -35,7 +35,7 @@ then
     ZIP_FILE="$DEST_DIR/app_logs-$TIMESTAMP.zip" #Zip the files
     find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip $ZIP_FILE -@
 
-    if [ -f $ZIP_FILE]  #check zipping file is succesfull or not
+    if [ -f $ZIP_FILE ]  #check zipping file is succesfull or not
     then
         echo "Successfully zipped the files"
 
@@ -44,7 +44,7 @@ then
             echo "Deleting Files: $file"
             rm -rf $file
         done <<< $FILES    
-        
+
     else
         echo "Zipping the files is Failed"
         exit 1    
