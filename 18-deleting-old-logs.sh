@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#Source directory
 SOURCE_DIR=/home/ec2-user/logs
 R="\e[31m" #Red color
 G="\e[32m" #Green color
@@ -14,11 +15,14 @@ else
     exit 1
 fi
 
-FILES=$(find $SOURCE_DIR -name "*.log" -mtime +30) #+30 ->older than 30 days .log files will delete
-                                                   #-30 ->less than 30 days files will delete
+#Finds older than 30 days .log files
+FILES=$(find $SOURCE_DIR -name "*.log" -mtime +30) 
+
+#Prints older than 30 days .log files
 echo "Files:: $FILES"
 
-while IFS= read -r file #IFS=Internal field seperator is white spaces, here it will ignore white spaces. -r is for not to ignore special charecters like /.
+#IFS=Internal Field Separator, which by default includes spaces, tabs, and newlines. Setting IFS= before read temporarily resets it to an empty value, ensuring lines are not split on whitespace.
+while IFS= read -r file 
 do 
     echo "Deleting file:: $file"
     rm -rf $file
