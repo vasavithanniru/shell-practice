@@ -1,12 +1,12 @@
 #!/bin/bash
 
-SOURCE_DIR=/c/Users/DELL/old-logs  #/home/ec2-user/logs
-R="\e[31m"
-G="\e[32m"
-N="\e[0m"
+SOURCE_DIR=/home/ec2-user/logs
+R="\e[31m" #Red color
+G="\e[32m" #Green color
+N="\e[0m"  #Normal
 
 
-if [ -d $SOURCE_DIR ] #-d will check the dir is exists or not
+if [ -d $SOURCE_DIR ] #-d will check the directory is exists or not
 then
     echo -e "$SOURCE_DIR is $G exists $N"
 else
@@ -14,8 +14,8 @@ else
     exit 1
 fi
 
-FILES=$(find $SOURCE_DIR -name "*.log" -mtime +14) #+14 ->older than 14 days files will delete
-                                                   #-14 ->less than 14 days files will delete
+FILES=$(find $SOURCE_DIR -name "*.log" -mtime +30) #+30 ->older than 30 days .log files will delete
+                                                   #-30 ->less than 30 days files will delete
 echo "Files:: $FILES"
 
 while IFS= read -r file #IFS=Internal field seperator is white spaces, here it will ignore white spaces. -r is for not to ignore special charecters like /.
