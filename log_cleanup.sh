@@ -13,7 +13,7 @@ N="\e[0m"    #Reset/Normal
 LOGS_FOLDER=/var/log/shellscript-logs
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 TIME_STAMP=$(date +%F-%H:%M:%S)
-LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME/$TIME_STAMP.log"
+LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME-$TIME_STAMP.log"
 
 # Create logs folder if not exist
 mkdir -p $LOGS_FOLDER &>> $LOG_FILE
