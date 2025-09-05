@@ -42,7 +42,7 @@ else
 fi        
 
 # Files to delete
-FILES_TO_DLETE=$(find $SOURCE_DIR -name "*.log" -mtime +14) 
+FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +14) 
 
 # Print older than 14 days files
 echo -e "$Y FILES $N= $FILES" | tee -a  $LOG_FILE
