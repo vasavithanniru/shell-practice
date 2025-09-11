@@ -58,7 +58,6 @@ fi
 
 # Find old log files
 FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
-echo "Files: $FILES"
 
 #true if file is empty. ! makes it expression false.
 if [ ! -z "$FILES" ]  
