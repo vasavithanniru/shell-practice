@@ -24,7 +24,7 @@ then
     echo -e "$R ERROR:: Please run this script with root access $N" 
     exit 1
 else 
-    echo -e "$G You are runing with root access $N"  
+    echo -e "$G You are runing with root access $N"  | tee -a $LOG_FILE
 fi
 }
 
@@ -46,13 +46,13 @@ fi
 
 if [ ! -d $SOURCE_DIR ]
 then
-    echo -e "$R $SOURCE_DIR does not exist, please check..$N"
+    echo -e "$R $SOURCE_DIR does not exist, please check..$N"  | tee -a $LOG_FILE
     exit 1
 fi    
 
 if [ ! -d $DEST_DIR ]
 then 
-    echo -e "$R $DEST_DIR does not exist, please check..$N"
+    echo -e "$R $DEST_DIR does not exist, please check..$N"  | tee -a $LOG_FILE
     exit 1
 fi    
 
@@ -62,7 +62,7 @@ FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
 #true if file is empty. ! makes it expression false.
 if [ ! -z "$FILES" ]  
 then 
-    echo "Files are found to ZIP: $FILES"
+    echo "Files are found to ZIP: $FILES"  | tee -a $LOG_FILE
     ZIP_FILE="$DEST_DIR/app-logs-$TIME_STAMP.zip"
 
     # Create ZIP file
@@ -71,19 +71,19 @@ then
     #Check if zip file successfully created or not
     if [ -f $ZIP_FILE ]
     then
-        echo -e "$G Successfully zipping the file older than $DAYS days $N"
+        echo -e "$G Successfully zipping the file older than $DAYS days $N"  | tee -a $LOG_FILE       
         #remove the files after zipping
         while IFS= read -r file
         do 
             echo "Deleting the files: $file" | tee -a $LOG_FILE
             rm -rf $file
         done <<< $FILES 
-            echo -e "Log files older than $DAYS days removed ... $G SUCCESS $N"
+            echo -e "Log files older than $DAYS days removed ... $G SUCCESS $N"  | tee -a $LOG_FILE
     else
-        echo -e "$R Zip file creation is FAILED $N"  
+        echo -e "$R Zip file creation is FAILED $N"  | tee -a $LOG_FILE
         exit 1
     fi      
 else 
-    echo -e "No log files found older than $DAYS days...$Y SKIPPING $N"     
+    echo -e "No log files found older than $DAYS days...$Y SKIPPING $N"   | tee -a $LOG_FILE
 fi       
         
