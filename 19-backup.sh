@@ -60,9 +60,10 @@ fi
 FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
 echo "Files: $FILES"
 
-if [ ! -z $FILES ] #true if file is empty. ! makes it expression false.
+#true if file is empty. ! makes it expression false.
+if [ ! -z "$FILES" ]  
 then 
-    echo "Files are found"
+    echo "Files are found to ZIP: $FILES"
     ZIP_FILE="$DEST_DIR/app-logs-$TIME_STAMP.zip"
 
     # Create ZIP file
