@@ -4,7 +4,7 @@
 DISK_USAGE=$(df -hT | grep xfs)
 
 # disk usage threshold
-DISK_THRESHOLD=5   #it is usually 75
+DISK_THRESHOLD=2   # Set to 75% in production
 
 R="\e[31m"
 G="\e[32m"
