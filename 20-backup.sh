@@ -6,9 +6,8 @@ DAYS=${3:-14} #if $3 is empty, default is 14
 TIMESTAMP=$(date +%F-%H-%M-%S) 
 #file_name=$(ls $SOURCE_DIR | cut -d "." -f1)
 
-
 USAGE(){
-    echo "USAGE:: sh $0 <source> <destination> <days(optional)>"
+    echo "USAGE:: sh 20.backup.sh <source> <destination> <days(optional)>"
 }
 
 failure(){
@@ -34,13 +33,8 @@ then
     echo "$DEST_DIR does not exist..Please check"
 fi
 
-FILES=$(find $SOURCE_DIR -type f "*.log" -mtime +$DAYS)
-cnt=$(echo "$FILES" | grep -c .)  # count non-empty lines
-echo " Count of files older than 14 days: $cnt"
-echo "  Files:"  
-echo "$FILES" 
-
-#echo "Files: $FILES"
+FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
+echo "Files: $FILES"
 
 #Check files are available or not
 if [ ! -z $FILES ]
