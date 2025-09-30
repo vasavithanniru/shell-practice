@@ -34,8 +34,8 @@ then
     echo "$DEST_DIR does not exist..Please check"
 fi
 
-FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
-cnt=$( echo "$FILES" | grep -c . )  # count non-empty lines
+FILES=$(find $SOURCE_DIR -type f "*.log" -mtime +$DAYS)
+cnt=$(echo "$FILES" | grep -c .)  # count non-empty lines
 echo " Count of files older than 14 days: $cnt"
 echo "  Files:"  
 echo "$FILES" 
