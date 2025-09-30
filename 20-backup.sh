@@ -35,7 +35,7 @@ then
 fi
 
 FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
-cnt=$( echo "$files" | grep -c . )  # count non-empty lines
+cnt=$( echo "$FILES" | grep -c . )  # count non-empty lines
 echo " Count of files older than 14 days: $cnt"
 echo "  Files:"  
 echo "$FILES" 
