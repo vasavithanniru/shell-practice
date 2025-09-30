@@ -44,8 +44,12 @@ fi
 # Files to delete
 FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +14) 
 
+cnt=$( echo "$files" | grep -c . )  # count non-empty lines
+echo " Count of files older than 14 days: $cnt" | tee -a $LOG_FILE
+
 # Print older than 14 days files
-echo -e "$Y FILES_TO_DELETE $N= $FILES_TO_DELETE" | tee -a  $LOG_FILE
+echo -e "$Y FILES_TO_DELETE $N" | tee -a  $LOG_FILE
+echo " $FILES_TO_DELETE" | tee -a  $LOG_FILE
 
 #  Delete each file found
 while IFS= read -r FILE_PATH
