@@ -38,7 +38,7 @@ echo "Files: $FILES"
 
 # Count the number of files
 FILE_COUNT=$(echo "$FILES" | wc -l)
-echo "Total files to be backed up: $FILE_COUNT" >> "$LOG_FILE"
+echo "Total files to be backed up: $FILE_COUNT" 
 
 #Check files are available or not
 if [ ! -z "$FILES" ]
